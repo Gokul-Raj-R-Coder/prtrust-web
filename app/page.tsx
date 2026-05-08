@@ -1,6 +1,7 @@
 "use client";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Dashboard() {
   const { data: session, status } = useSession();
@@ -33,15 +34,18 @@ export default function Dashboard() {
 
   // LOGGED IN STATE
   if (session) {
+    const userName = session.user?.name || "GitHub user";
+    const userImage = session.user?.image || "";
+
     return (
       <div className="min-h-screen bg-gray-900 text-white p-10 font-sans">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="flex items-center justify-between bg-gray-800 p-6 rounded-xl border border-gray-700">
             <div className="flex items-center gap-4">
-              <img src={session.user.image} alt="Avatar" className="w-12 h-12 rounded-full" />
+              <img src={userImage} alt="Avatar" className="w-12 h-12 rounded-full" />
               <div>
-                <h1 className="text-2xl font-bold">Welcome, {session.user.name}</h1>
+                <h1 className="text-2xl font-bold">Welcome, {userName}</h1>
                 <p className="text-gray-400">PRTrust Control Panel</p>
               </div>
             </div>
