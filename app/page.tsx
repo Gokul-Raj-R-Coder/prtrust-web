@@ -39,7 +39,7 @@ export default function Dashboard() {
           {/* Header */}
           <div className="flex items-center justify-between bg-gray-800 p-6 rounded-xl border border-gray-700">
             <div className="flex items-center gap-4">
-              <img src={session.user.image} alt="Avatar" className="w-12 h-12 rounded-full" />
+              <img src={session.user.image || ""} alt="Avatar" className="w-12 h-12 rounded-full" />
               <div>
                 <h1 className="text-2xl font-bold">Welcome, {session.user.name}</h1>
                 <p className="text-gray-400">PRTrust Control Panel</p>
