@@ -12,12 +12,12 @@
 
 ## 🎮 Try it Live (Zero Setup)
 Want to see the AI in action without installing anything? 
-1. Go to the [PRTrust Sandbox Repository]((https://github.com/Gokul-Raj-R-Coder/prtrust-sandbox)).
+1. Go to the [PRTrust Sandbox Repository](https://github.com/Gokul-Raj-R-Coder/prtrust-sandbox).
 2. Edit the `README.md` or add a dummy code file.
 3. Open a Pull Request.
 4. Watch the PRTrust bot analyze the diff and post a score in under 10 seconds!
 
-*Want to play with the custom Risk Dial? Log into the [Live Dashboard]((https://prtrust-ouqi960rq-gokul-raj-r-coders-projects.vercel.app/)) to test the UI.*
+*Want to play with the custom Risk Dial? Log into the [Live Dashboard](https://prtrust-ouqi960rq-gokul-raj-r-coders-projects.vercel.app/) to test the UI.*
 
 ---
 
