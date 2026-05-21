@@ -42,7 +42,7 @@ Most AI reviewers are black boxes that treat every PR exactly the same. PRTrust 
 
 ## 🚀 Quick Start (Self-Hosting)
 
-<details>
+
 <summary><b>🛠️ Step-by-Step: How to Configure the GitHub App</b> (Click to expand)</summary>
 
 To connect PRTrust to your repositories, you need to create a custom GitHub App. It takes about 3 minutes.
@@ -82,7 +82,7 @@ Click **Create GitHub App**. On the final screen, you will gather the keys for y
 
 **6. Install the App**
 Look at the left sidebar, click **Install App**, and install it on the repositories you want PRTrust to monitor. You're done!
-</details>
+
 ---
 
 ## 🗺️ Roadmap (Help Wanted!)
