@@ -42,47 +42,88 @@ Most AI reviewers are black boxes that treat every PR exactly the same. PRTrust 
 
 ## 🚀 Quick Start (Self-Hosting)
 
+PRTrust is split into two lightweight parts: the **Frontend Dashboard** (Next.js) and the **Webhook Engine** (Node.js). 
 
-<summary><b>🛠️ Step-by-Step: How to Configure the GitHub App</b> (Click to expand)</summary>
+### 1. The Dashboard (Frontend - This Repository)
+This is the UI where your team sets their AI Risk Dial.
 
+```bash
+git clone [https://github.com/Gokul-Raj-R-Coder/prtrust-web.git](https://github.com/Gokul-Raj-R-Coder/prtrust-web.git)
+cd prtrust-web
+npm install
+
+Create a .env.local file in the root directory:
+
+DATABASE_URL=postgresql://your-neon-db-url...
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=generate_a_random_string
+GITHUB_ID=your_github_oauth_client_id
+GITHUB_SECRET=your_github_oauth_client_secret
+
+Run the development server:
+npm run dev
+
+2. The Webhook Engine (Backend)
+The Node.js backend that processes the live webhooks and runs the Gemini AI logic is hosted in a separate repository.
+👉 Go to prtrust-api repository for backend deployment instructions.
+
+3. GitHub App Configuration
 To connect PRTrust to your repositories, you need to create a custom GitHub App. It takes about 3 minutes.
 
-**1. Create the App**
-* Go to GitHub -> **Settings** -> **Developer Settings** -> **GitHub Apps**.
-* Click **New GitHub App**.
-* **GitHub App Name:** `PRTrust (Your Name)`
-* **Homepage URL:** Your live Vercel frontend URL (e.g., `https://prtrust-web.vercel.app`).
+1. Create the App
 
-**2. Configure OAuth (For the Frontend)**
-* **Callback URL:** Your Vercel URL + `/api/auth/callback/github` (e.g., `https://prtrust-web.vercel.app/api/auth/callback/github`).
-* Uncheck **Expire user authorization tokens**.
+Go to GitHub -> Settings -> Developer Settings -> GitHub Apps.
 
-**3. Configure Webhooks (For the Backend)**
-* **Active:** Checked.
-* **Webhook URL:** Your live Render backend URL + `/webhook` (e.g., `https://prtrust-api.onrender.com/webhook`).
-* **Webhook Secret:** Type a random password here. Copy it and save it to your backend `.env` as `WEBHOOK_SECRET`.
+Click New GitHub App.
 
-**4. Set Permissions & Events**
-Go to **Repository Permissions** and set the following:
-* **Commit statuses:** Read & write
-* **Contents:** Read-only
-* **Pull requests:** Read & write
+GitHub App Name: PRTrust (Your Name)
 
-Go to **Subscribe to events** and check:
-* **Pull request**
-* **Check run**
-* **Check suite**
+Homepage URL: Your live Vercel frontend URL (e.g., https://prtrust-web.vercel.app).
 
-**5. Save and Get Your Keys**
-Click **Create GitHub App**. On the final screen, you will gather the keys for your `.env` files:
-* Copy the **App ID** -> Backend `.env` (`GITHUB_APP_ID`)
-* Copy the **Client ID** -> Frontend `.env` (`GITHUB_ID`)
-* Click **Generate a new client secret** -> Frontend `.env` (`GITHUB_SECRET`)
-* Click **Generate a private key**. This will download a `.pem` file. Open the file in a text editor, copy the entire block of text, and paste it into your Backend `.env` (`GITHUB_PRIVATE_KEY`).
+2. Configure OAuth (For the Frontend)
 
-**6. Install the App**
-Look at the left sidebar, click **Install App**, and install it on the repositories you want PRTrust to monitor. You're done!
+Callback URL: Your Vercel URL + /api/auth/callback/github (e.g., https://prtrust-web.vercel.app/api/auth/callback/github).
 
+Uncheck Expire user authorization tokens.
+
+3. Configure Webhooks (For the Backend)
+
+Active: Checked.
+
+Webhook URL: Your live Render backend URL + /webhook (e.g., https://prtrust-api.onrender.com/webhook).
+
+Webhook Secret: Type a random password here. Copy it and save it to your backend .env as WEBHOOK_SECRET.
+
+4. Set Permissions & Events
+Go to Repository Permissions and set the following:
+
+Commit statuses: Read & write
+
+Contents: Read-only
+
+Pull requests: Read & write
+
+Go to Subscribe to events and check:
+
+Pull request
+
+Check run
+
+Check suite
+
+5. Save and Get Your Keys
+Click Create GitHub App. On the final screen, you will gather the keys for your .env files:
+
+Copy the App ID -> Backend .env (GITHUB_APP_ID)
+
+Copy the Client ID -> Frontend .env (GITHUB_ID)
+
+Click Generate a new client secret -> Frontend .env (GITHUB_SECRET)
+
+Click Generate a private key. This will download a .pem file. Open the file in a text editor, copy the entire block of text, and paste it into your Backend .env (GITHUB_PRIVATE_KEY).
+
+6. Install the App
+Look at the left sidebar, click Install App, and install it on the repositories you want PRTrust to monitor. You're done!
 ---
 
 ## 🗺️ Roadmap (Help Wanted!)
